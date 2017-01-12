@@ -5,11 +5,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: pass
     volumes:
-      - db:/var/lib/mysql
+      - ./db:/var/lib/mysql
+    ports:
+      - '33306:3306'
   php:
     build: ./php
     ports:
-      - '80:80'
+      - '8088:80'
     volumes:
       - ./html:/var/www/html
     depends_on:
